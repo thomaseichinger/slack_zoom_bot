@@ -7,12 +7,9 @@ try:
 except ImportError:
     from yaml import Loader, Dumper
 
-config_file = "./config.yaml"
+config_data = load(open("./config.yaml", 'r').read(), Loader=Loader)
 
-config_data = load(open(config_file, 'r').read(), Loader=Loader)
-token = config_data['token']
-
-sc = SlackClient(token)
+sc = SlackClient(config_data['token'])
 
 text = "Dear <!everyone>, this is a friendly reminder that the standup is about to happen again on " + config_data['zoom_url']
 text2 = "So please get coffee, take a comfortable seat and enjoy!"
@@ -22,5 +19,7 @@ sc.api_call("chat.postMessage", channel=config_data['slack_channel'], text=text,
 sleep(2)
 
 sc.api_call("chat.postMessage", channel=config_data['slack_channel'], text=text2, username='Standup_Whoop', icon_emoji=':necktie:')
+
+print "Sucessfully slackbotted."
 
 quit()
