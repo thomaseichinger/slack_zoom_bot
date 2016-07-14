@@ -14,11 +14,11 @@ sc = SlackClient(config_data['token'])
 text = "Dear <!everyone>, this is a friendly reminder that the standup is about to happen again on " + config_data['zoom_url']
 text2 = "So please get coffee, take a comfortable seat and enjoy!"
 
-sc.api_call("chat.postMessage", channel=config_data['slack_channel'], text=text, username='Standup_Whoop', icon_emoji=':necktie:')
+sc.api_call("chat.postMessage", channel=config_data['slack_channel'], text=text, username='Standup_Whoop', icon_emoji=':turkey:')
 
 sleep(2)
 
-sc.api_call("chat.postMessage", channel=config_data['slack_channel'], text=text2, username='Standup_Whoop', icon_emoji=':necktie:')
+sc.api_call("chat.postMessage", channel=config_data['slack_channel'], text=text2, username='Standup_Whoop', icon_emoji=':turkey:')
 
 print "Sucessfully slackbotted."
 
